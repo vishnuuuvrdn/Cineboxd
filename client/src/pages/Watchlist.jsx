@@ -36,7 +36,7 @@ function Watchlist() {
       <div className="max-w-275 mx-auto px-4 sm:px-6 pt-28 pb-20">
         <BackButton className="mb-4" />
         <header className="flex justify-between items-baseline border-b border-[#2c3440] pb-2.5 mb-8">
-          <h1 className="text-[1.4rem] uppercase tracking-[1px] font-semibold">
+          <h1 className="text-xl uppercase tracking-[1px] font-bold">
             Watchlist
           </h1>
           <span className="text-[#667788] text-sm font-bold">
@@ -82,11 +82,8 @@ function Watchlist() {
                   onClick={() => navigate(`/movie/${movie.movieId}`)}
                 />
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    remove(movie.movieId);
-                  }}
-                  className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-black/70 text-white text-xl flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-[#ff4b4b] transition-all cursor-pointer"
+                  onClick={(e) => handleRemove(e, movie.movieId)}
+                  className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-black/70 text-white text-lg leading-none opacity-0 group-hover:opacity-100 hover:bg-[#ff4b4b] transition-all cursor-pointer"
                 >
                   ×
                 </button>

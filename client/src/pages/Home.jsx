@@ -31,7 +31,7 @@ function Home() {
     staleTime: 1000 * 60 * 5,
   });
 
-  const movies = data?.data?.results ?? [];
+  const movies = data?.data ?? [];
   const gridCols = isMobile ? 2 : isTablet ? 4 : 5;
   const handleSearch = (q) => setSearchParams(q ? { search: q } : {});
 
