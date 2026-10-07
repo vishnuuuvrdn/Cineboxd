@@ -5,12 +5,24 @@ const API_KEY = process.env.TMDB_API_KEY;
 
 const getPopularMovies = async () => {
   try{
-    const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+    const endPoints = Array.from(
+      { length: 50 },
+      (_, i) =>
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${i + 1}`,
     );
-    return response.data;
+
+    const responses = await Promise.all(
+      endPoints.map((endpoint) => axios.get(endpoint)),
+    );
+
+    const movies = responses.flatMap((response) => response.data.results);
+
+    const data = await axios.get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+    );
+    return movies;
   } catch(error) {
-    console.error("TMDB Error:", error);
+    console.error("TMDB Error:", error.message);
     throw new Error(error.message);
   }
 };
@@ -23,7 +35,7 @@ const searchMovies = async (query) => {
     return response.data;
   }
   catch(error){
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -35,7 +47,7 @@ const getMovieDetails = async (id) => {
     return response.data;
   }
   catch(error){
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -54,7 +66,7 @@ const getSimilarMovies = async (id) => {
   }
   catch(error){
     console.error({message : error.message});
-    console.log(error);
+    console.log(error.message);
   }
 };
 

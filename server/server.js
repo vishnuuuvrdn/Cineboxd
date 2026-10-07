@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const dns = require("dns/promises")
+dns.setServers(["1.1.1.1", "8.8.8.8"])
 
 const movieRoutes = require("./routes/movieRoutes");
 const authRoutes = require("./routes/authRoutes");
