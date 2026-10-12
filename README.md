@@ -2,7 +2,7 @@
 
 A full-stack movie tracking web application inspired by Letterboxd, built with React and Node.js. Browse popular movies, search for any title, manage your watchlist and favorites, log what you've watched, and more — all backed by the TMDB API.
 
-**Live Demo →** [cineboxd.vishnuuuvrdn.workers.dev](https://cineboxd.vishnuuuvrdn.me)
+**Live Demo →** [cineboxd.vishnuuuvrdn.me](https://cineboxd.vishnuuuvrdn.me)
 
 ---
 
